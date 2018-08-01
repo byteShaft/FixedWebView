@@ -1,6 +1,7 @@
 package com.byteshaft.webview;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
@@ -12,13 +13,15 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity implements AdvancedWebView.Listener  {
+public class MainActivity extends Activity implements AdvancedWebView.Listener  {
 
-    private static final String TEST_PAGE_URL = "http://acc.documantal.com/crm/";
+    private static final String TEST_PAGE_URL = "http://www.arisingdirect.com/default.php";
     private AdvancedWebView mWebView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
         setContentView(R.layout.activity_main);
 
         mWebView = (AdvancedWebView) findViewById(R.id.webview);
+        progressBar = findViewById(R.id.progressBar);
         mWebView.setListener(this, this);
         mWebView.setGeolocationEnabled(false);
         mWebView.setMixedContentAllowed(true);
@@ -94,11 +98,13 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
     @Override
     public void onPageStarted(String url, Bitmap favicon) {
         mWebView.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onPageFinished(String url) {
         mWebView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
