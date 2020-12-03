@@ -4,12 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.http.SslError;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -19,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements AdvancedWebView.Listener  {
 
-    private static final String TEST_PAGE_URL = "http://www.arisingdirect.com/default.php";
+    private static final String TEST_PAGE_URL = "https:codebase.pk/";
     private AdvancedWebView mWebView;
     private ProgressBar progressBar;
 
@@ -39,7 +37,6 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener  
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                Toast.makeText(MainActivity.this, "Finished loading", Toast.LENGTH_SHORT).show();
             }
 
         });
