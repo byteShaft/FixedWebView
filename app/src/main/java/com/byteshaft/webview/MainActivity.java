@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements AdvancedWebView.Listener  {
 
-    private static final String TEST_PAGE_URL = "https:codebase.pk/";
+    private static final String TEST_PAGE_URL = "https://codebase.pk/";
     private AdvancedWebView mWebView;
     private ProgressBar progressBar;
 
